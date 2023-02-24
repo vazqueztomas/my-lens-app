@@ -8,16 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const {data, isLoading, error} = useExplorePublicationsQuery(
     {
-      endpoint: "https://api-mumbai.lens.dev/",
-      fetchParams: {
-        headers: {
-          "Content-Type": "application/json",
-        }
-      },
-    },
-    {
       request: {
-        sortCriteria: PublicationSortCriteria.TopCommented, 
+        sortCriteria: PublicationSortCriteria.TopMirrored, 
       },
     }
   );
