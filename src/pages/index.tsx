@@ -1,10 +1,29 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import { PublicationSortCriteria, useExplorePublicationsQuery } from '../graphql/generated'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const {data, isLoading, error} = useExplorePublicationsQuery(
+    {
+      endpoint: "https://api-mumbai.lens.dev/",
+      fetchParams: {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      },
+    },
+    {
+      request: {
+        sortCriteria: PublicationSortCriteria.TopCommented, 
+      },
+    }
+  );
+
+  console.log({data, isLoading, error});
+
   return (
     <>
       <Head>
