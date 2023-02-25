@@ -2,19 +2,18 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { PublicationSortCriteria, useExplorePublicationsQuery } from '../graphql/generated'
+import { ConnectWallet, useAddress } from '@thirdweb-dev/react'
+import useLogin from '../lib/auth/useLogin'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const {data, isLoading, error} = useExplorePublicationsQuery(
-    {
-      request: {
-        sortCriteria: PublicationSortCriteria.TopMirrored, 
-      },
-    }
-  );
+  const address = useAddress();
+  const {mutate: requestLogin} = useLogin();
 
-  console.log({data, isLoading, error});
+  if (!address) {
+    return <ConnectWallet/>
+  };
 
   return (
     <>
@@ -25,7 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        Hello world
+        <button onClick = {() => requestLogin()}>Login</button>
       </main>
     </>
   )
