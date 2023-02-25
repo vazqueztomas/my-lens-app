@@ -16,9 +16,11 @@ export default function SignInbutton({}: Props) {
     return (
       <button onClick={() => switchNetWork?.(ChainId.Polygon)}>
         Switch Network
-      </button>)
-  }
+      </button>
+  )}
   // 3. Sign in with lens
+
+
   // 4. Show the user profile on Lens
 
 
