@@ -6,7 +6,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const desiredChainId = ChainId.Polygon;
   const queryClient = new QueryClient()
   
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThirdwebProvider activeChain="ethereum">
