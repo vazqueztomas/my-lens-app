@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { PublicationSortCriteria, useExplorePublicationsQuery } from '../graphql/generated'
 import { ConnectWallet, useAddress } from '@thirdweb-dev/react'
 import useLogin from '../lib/auth/useLogin'
 
